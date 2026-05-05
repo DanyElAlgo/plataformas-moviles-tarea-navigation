@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/features/accounts/domain/entities/account.entity.dart';
+import 'package:flutter_application_1/config/routes.dart';
 import 'package:flutter_application_1/features/accounts/domain/presentation/widgets/item_info.widget.dart';
 
 class MyAccount extends StatelessWidget {
@@ -8,9 +8,12 @@ class MyAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final info =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
-    final account = info['account'] as AccountEntity;
+    final routeArgs = ModalRoute.of(context)?.settings.arguments;
+    if (routeArgs == null || routeArgs is! AccountDetailsArgs) {
+      return Scaffold(body: Center(child: Text('No account data provided')));
+    }
+
+    final account = (routeArgs).account;
 
     return Scaffold(
       body: Center(

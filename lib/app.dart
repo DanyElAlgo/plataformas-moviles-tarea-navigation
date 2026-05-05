@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/accounts.page.dart';
 import 'package:flutter_application_1/home.page.dart';
 import 'package:flutter_application_1/profile.page.dart';
+import 'package:flutter_application_1/config/app_theme.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -16,7 +17,7 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: HomePage.path,
-      // theme: ThemeData(fontFamily: 'Test', textTheme: TextTheme(bodyMedium: TextStyle(fontSize: 24))),
+      theme: buildAppTheme(),
       routes: {
         HomePage.path: (context) => HomePage(),
         MyAccount.path : (context) => MyAccount(),

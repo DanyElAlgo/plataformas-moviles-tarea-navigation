@@ -4,6 +4,7 @@ import 'package:flutter_application_1/commons/extens.dart';
 import 'package:flutter_application_1/features/accounts/domain/entities/account.entity.dart';
 import 'package:flutter_application_1/welcome.page.dart';
 import 'package:flutter_application_1/profile.page.dart';
+import 'package:flutter_application_1/config/routes.dart';
 
 class HomePage extends StatefulWidget {
   static String path = '/';
@@ -37,7 +38,11 @@ class _MyWidgetState extends State<HomePage> {
       bank: 'fyuagdshbjfdbshfakyebvjsd',
     );
 
-    context.go(MyAccount.path, arguments: {'account': account});
+    // Use typed args for safer navigation
+    context.go(
+      MyAccount.path,
+      arguments: AccountDetailsArgs(account),
+    );
   }
 
   Future<void> openWidgetPage() async {
@@ -114,9 +119,7 @@ class _MyWidgetState extends State<HomePage> {
             ),
             const SizedBox(height: 16),
             Text(
-              welcomeMessage == null
-                  ? ''
-                  : '$welcomeMessage',
+              welcomeMessage == null ? '' : '$welcomeMessage',
               textAlign: TextAlign.center,
             ),
           ],
